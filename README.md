@@ -50,12 +50,12 @@
 ### `.env` 例
 
 ```env
-START_URL=&quot;https://ichikyo.obic7.obicnet.ne.jp/xyz&quot;
-IGNORED_DATES=&quot;2026/06/28 (日),2026/06/29 (月),2026/06/30 (火),2026/07/01 (水),2026/07/02 (木),2026/07/03 (金),2026/07/04 (土),2026/07/05 (日)&quot;
-USERNAME=&quot;123456&quot;
-PASSWORD=&quot;1234&quot;
-SIGNAL_GROUP_ID=&quot;xyz&quot;
-SIGNAL_USER_PHONE_NUMBER=&quot;+180456789&quot;
+START_URL="https://ichikyo.obic7.obicnet.ne.jp/xyz";
+IGNORED_DATES="2026/06/28 (日),2026/06/29 (月),2026/06/30 (火),2026/07/01 (水),2026/07/02 (木),2026/07/03 (金),2026/07/04 (土),2026/07/05 (日)";
+USERNAME="123456";
+PASSWORD="1234";
+SIGNAL_GROUP_ID="xyz";
+SIGNAL_USER_PHONE_NUMBER="+180456789";
 ```
 
 ## 実行方法（uv）
@@ -66,10 +66,10 @@ main.py を以下のコマンドで実行します。
 uv run main.py
 ```
 
-main.py の概要（抜粋）
-. load_dotenv() で .env を読み込み
-. START_URL, USERNAME, PASSWORD, IGNORED_DATES を os.getenv() から取得
-. run_check(start_url, username, password, ignored_dates) を呼び出します
+**main.py の概要（抜粋）**
+- load_dotenv() で .env を読み込み
+- START_URL, USERNAME, PASSWORD, IGNORED_DATES を os.getenv() から取得
+- run_check(start_url, username, password, ignored_dates) を呼び出します
 
 ## セットアップ
 
@@ -87,8 +87,8 @@ playwright install
 
 ### 注意点 / トラブルシューティング
 
-iframe前提：ログインやメニュー操作は #scroll iframe 内にあります。セレクタ
+- **iframe前提**：ログインやメニュー操作は #scroll iframe 内にあります。セレクタ
 #txtKyoushuuseiNO、#txtPassword、#btnAuthentication、#btnMenu_Kyoushuuyoyaku
 がサイト変更で変わった場合、更新が必要です。
-動的描画：div.blocks の読み取りが不安定な場合は、待機（wait）やリロードのタイミングを調整します。
-除外リストの一致条件：ignored_dates はサイトが返す span.lbl の文字列と 完全一致で比較されます（item.get("date") not in ignored_dates）。
+- **動的描画**：div.blocks の読み取りが不安定な場合は、待機（wait）やリロードのタイミングを調整します。
+- **除外リストの一致条件**：ignored_dates はサイトが返す span.lbl の文字列と 完全一致で比較されます（item.get("date") not in ignored_dates）。
